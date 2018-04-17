@@ -27,6 +27,7 @@ import {
 } from '@angular/material';
 import { LoginComponent } from './home/login-dialog.component';
 import { HomeComponent } from './home/home.component';
+import { PayComponent } from './home/bookRoom/pay-dialog.component';
 
 @NgModule({
   imports: [
@@ -74,11 +75,11 @@ import { HomeComponent } from './home/home.component';
     AngularDateTimePickerModule,
   ],
   declarations: [
-    AppComponent, HomeComponent, LoginComponent,
+    AppComponent, HomeComponent, LoginComponent, PayComponent,
     AppRoutingModule.COMPONENTS,
     AppRoutingModule.DIALOGS_COMPONENTS,
   ],
-  entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS, HomeComponent, LoginComponent],
+  entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS, HomeComponent, LoginComponent, PayComponent],
   bootstrap: [AppComponent],
   providers: [
     HttpService,
