@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
-import { BookRoomComponent } from './home/bookRoom/bookRoom.component';
+import { ReserveComponent } from './home/reserve/reserve.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ListComponent } from './home/list/list.component';
+import { LoginComponent } from './home/login-dialog.component';
 
 const appRoutes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: HomeComponent.URL },
+  { path: '', pathMatch: 'full', redirectTo: HomeComponent.URL + '/' + ListComponent.URL },
   {
     path: HomeComponent.URL, component: HomeComponent,
     children: [
-      // Declaracion de RUTAS
-      // { path: TicketsComponent.URL, component: TicketsComponent }, <-- Ejemplo
-
-      { path: BookRoomComponent.URL, component: BookRoomComponent },
+      { path: ReserveComponent.URL, component: ReserveComponent },
+      { path: ListComponent.URL, component: ListComponent}
     ]
   }
 ];
@@ -23,11 +23,10 @@ const appRoutes: Routes = [
 
 export class AppRoutingModule {
   static COMPONENTS = [
-    // Declaracion de COMPONENTES
-    HomeComponent, BookRoomComponent,
+    HomeComponent, ReserveComponent, ListComponent, LoginComponent
   ];
 
   static DIALOGS_COMPONENTS = [
-    // Declaracion de DIALOGOS
+    HomeComponent, LoginComponent
   ];
 }

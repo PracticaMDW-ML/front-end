@@ -1,19 +1,19 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReserveComponent } from './reserve/reserve.component';
 import { MatDialog } from '@angular/material';
-import { LoginComponent } from './login-dialog.component';
-import { ListComponent } from './list/list.component';
+import { LoginComponent } from '../login-dialog.component';
+import { HomeComponent } from '../home.component';
+import { ReserveComponent } from '../reserve/reserve.component';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: `home.component.html`,
-  styleUrls: ['home.component.css']
+  selector: 'app-list',
+  templateUrl: `list.component.html`,
+  styleUrls: ['list.component.css']
 })
 
-export class HomeComponent implements OnDestroy {
+export class ListComponent implements OnDestroy {
 
-  static URL = 'home';
+  static URL = 'list';
 
   reserve: boolean;
 
@@ -28,10 +28,6 @@ export class HomeComponent implements OnDestroy {
 
   book() {
     this.router.navigate([HomeComponent.URL, ReserveComponent.URL]);
-  }
-
-  inicio() {
-    this.router.navigate([HomeComponent.URL, ListComponent.URL]);
   }
 
   ngOnDestroy(): void {

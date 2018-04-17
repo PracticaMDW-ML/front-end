@@ -75,11 +75,19 @@ import { PayComponent } from './home/bookRoom/pay-dialog.component';
     AngularDateTimePickerModule,
   ],
   declarations: [
+<<<<<<< HEAD
     AppComponent, HomeComponent, LoginComponent, PayComponent,
     AppRoutingModule.COMPONENTS,
     AppRoutingModule.DIALOGS_COMPONENTS,
   ],
   entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS, HomeComponent, LoginComponent, PayComponent],
+=======
+    AppComponent,
+    AppRoutingModule.COMPONENTS,
+    AppRoutingModule.DIALOGS_COMPONENTS,
+  ],
+  entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS],
+>>>>>>> develop
   bootstrap: [AppComponent],
   providers: [
     HttpService,
