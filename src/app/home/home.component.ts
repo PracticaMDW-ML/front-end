@@ -1,5 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LoginComponent } from './login-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,7 @@ export class HomeComponent implements OnDestroy {
 
   static URL = 'home';
 
-  constructor() {
+  constructor(public loginDialog: MatDialog) {
   }
 
   /* EJEMPLO PARA ENRUTAR
@@ -24,4 +26,9 @@ export class HomeComponent implements OnDestroy {
     // Cerrar todas las subscripciones
   }
 
+  login(): void {
+    const dialogRef = this.loginDialog.open(LoginComponent, {
+      width: '250px'
+    });
+  }
 }
