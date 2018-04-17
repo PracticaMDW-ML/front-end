@@ -27,7 +27,6 @@ import {
 } from '@angular/material';
 import { LoginComponent } from './home/login-dialog.component';
 import { HomeComponent } from './home/home.component';
-
 @NgModule({
   imports: [
     AppRoutingModule,
