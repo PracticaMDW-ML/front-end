@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookRoomComponent } from './bookRoom/bookRoom.component';
 import { MatDialog } from '@angular/material';
 import { LoginComponent } from './login-dialog.component';
 
@@ -13,7 +14,7 @@ export class HomeComponent implements OnDestroy {
 
   static URL = 'home';
 
-  constructor(public loginDialog: MatDialog) {
+  constructor(public loginDialog: MatDialog, private router: Router) {
   }
 
   /* EJEMPLO PARA ENRUTAR
@@ -21,6 +22,10 @@ export class HomeComponent implements OnDestroy {
     this.router.navigate([HomeComponent.URL, TicketsComponent.URL]);
   }
   */
+
+  book() {
+    this.router.navigate([HomeComponent.URL, BookRoomComponent.URL]);
+  }
 
   ngOnDestroy(): void {
     // Cerrar todas las subscripciones
