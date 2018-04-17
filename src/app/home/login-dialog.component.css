@@ -4,7 +4,8 @@
 
 button{
     background-color:rgb(1, 22, 90);
-    color: rgb(222, 236, 243);
+    color:#FFFFFF;
+    ;
 }
 
 button:hover, .material-icons:hover{
@@ -16,9 +17,16 @@ h1{
     text-align: center;
     color: rgb(1, 22, 90);
     font-variant: small-caps;
-
+    margin-top: 10%;
 }
 
 .buttons_dialog{    
     text-align: center;
+}
+
+img{
+    display: block;
+    margin: auto;
+    height: 80%;
+    width: 80%;
 }
