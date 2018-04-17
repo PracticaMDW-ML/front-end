@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-  <span>Hotelporhoras.com</span>
+  <button mat-button (click)="inicio()">
+      <span>Hotelporhoras.com</span>
+  </button>
   <span class="span-aling-spacer"></span>
   <button mat-button (click)="login()">
     <span>Iniciar sesión</span>
@@ -7,57 +9,5 @@
   </button>
 </mat-toolbar>
 <br>
-
-<div class="info-card-container">
-  <mat-card>
-    <img mat-card-image
-         src="https://thumbnails.trvl-media.com/K3BoWkaFmlj67y-4hH9NRjMNlp8=/773x515/smart/filters:quality(60)/images.trvl-media.com/hotels/11000000/10620000/10611400/10611379/8a564c25_z.jpg"
-         alt="Photo of a Shiba Inu">
-    <mat-card-title>Suite</mat-card-title>
-    <mat-card-content>
-      <p style="text-align: right">PRECIO 100€ </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-raised-button (click)="book()">Reservar</button>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card>
-    <img mat-card-image
-         src="https://thumbnails.trvl-media.com/K3BoWkaFmlj67y-4hH9NRjMNlp8=/773x515/smart/filters:quality(60)/images.trvl-media.com/hotels/11000000/10620000/10611400/10611379/8a564c25_z.jpg"
-         alt="Photo of a Shiba Inu">
-    <mat-card-title>Suite</mat-card-title>
-    <mat-card-content>
-      <p style="text-align: right">PRECIO 100€ </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-raised-button (click)="book()">Reservar</button>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card>
-    <img mat-card-image
-         src="https://thumbnails.trvl-media.com/K3BoWkaFmlj67y-4hH9NRjMNlp8=/773x515/smart/filters:quality(60)/images.trvl-media.com/hotels/11000000/10620000/10611400/10611379/8a564c25_z.jpg"
-         alt="Photo of a Shiba Inu">
-    <mat-card-title>Suite</mat-card-title>
-    <mat-card-content>
-      <p style="text-align: right">PRECIO 100€ </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-raised-button>Reservar</button>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card>
-    <img mat-card-image
-         src="https://thumbnails.trvl-media.com/K3BoWkaFmlj67y-4hH9NRjMNlp8=/773x515/smart/filters:quality(60)/images.trvl-media.com/hotels/11000000/10620000/10611400/10611379/8a564c25_z.jpg"
-         alt="Photo of a Shiba Inu">
-    <mat-card-title>Suite</mat-card-title>
-    <mat-card-content>
-      <p style="text-align: right">PRECIO 100€ </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-raised-button>Reservar</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-
 
 <router-outlet></router-outlet>
