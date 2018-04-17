@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { BookRoomComponent } from './bookRoom/bookRoom.component';
+import { ReserveComponent } from './reserve/reserve.component';
 import { MatDialog } from '@angular/material';
 import { LoginComponent } from './login-dialog.component';
 
@@ -24,7 +24,7 @@ export class HomeComponent implements OnDestroy {
   */
 
   book() {
-    this.router.navigate([HomeComponent.URL, BookRoomComponent.URL]);
+    this.router.navigate([HomeComponent.URL, ReserveComponent.URL]);
   }
 
   ngOnDestroy(): void {

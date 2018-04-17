@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
-import { BookRoomComponent } from './home/bookRoom/bookRoom.component';
+import { ReserveComponent } from './home/reserve/reserve.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
@@ -11,7 +11,7 @@ const appRoutes: Routes = [
       // Declaracion de RUTAS
       // { path: TicketsComponent.URL, component: TicketsComponent }, <-- Ejemplo
 
-      { path: BookRoomComponent.URL, component: BookRoomComponent },
+      { path: ReserveComponent.URL, component: ReserveComponent },
     ]
   }
 ];
@@ -24,7 +24,7 @@ const appRoutes: Routes = [
 export class AppRoutingModule {
   static COMPONENTS = [
     // Declaracion de COMPONENTES
-    HomeComponent, BookRoomComponent,
+    HomeComponent, ReserveComponent,
   ];
 
   static DIALOGS_COMPONENTS = [

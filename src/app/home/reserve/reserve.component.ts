@@ -1,13 +1,13 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 
 @Component({
-    templateUrl: `bookRoom.component.html`,
-    styleUrls: ['bookRoom.component.css']
+    templateUrl: `reserve.component.html`,
+    styleUrls: ['reserve.component.css']
 })
 
-export class BookRoomComponent implements OnInit {
+export class ReserveComponent implements OnInit {
 
-    static URL = 'bookRoom';
+    static URL = 'reserve';
 
     date: Date = new Date();
     settings = {
