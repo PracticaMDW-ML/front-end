@@ -74,11 +74,11 @@ import { HomeComponent } from './home/home.component';
     AngularDateTimePickerModule,
   ],
   declarations: [
-    AppComponent, HomeComponent, LoginComponent,
+    AppComponent,
     AppRoutingModule.COMPONENTS,
     AppRoutingModule.DIALOGS_COMPONENTS,
   ],
-  entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS, HomeComponent, LoginComponent],
+  entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS],
   bootstrap: [AppComponent],
   providers: [
     HttpService,
