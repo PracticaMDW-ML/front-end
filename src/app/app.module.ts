@@ -24,6 +24,8 @@ import {
   MatTabsModule, MatToolbarModule, MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { LoginComponent } from './home/login-dialog.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports: [
@@ -69,11 +71,11 @@ import {
     ReactiveFormsModule,
   ],
   declarations: [
-    AppComponent,
+    AppComponent, HomeComponent, LoginComponent,
     AppRoutingModule.COMPONENTS,
     AppRoutingModule.DIALOGS_COMPONENTS,
   ],
-  entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS],
+  entryComponents: [AppRoutingModule.DIALOGS_COMPONENTS, HomeComponent, LoginComponent],
   bootstrap: [AppComponent],
   providers: [
     HttpService,
