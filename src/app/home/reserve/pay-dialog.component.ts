@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 
 @Component({
-  selector: 'app-dialog-login',
   templateUrl: 'pay-dialog.component.html',
   styleUrls: ['pay-dialog.component.css']
 })
