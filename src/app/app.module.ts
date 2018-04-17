@@ -10,6 +10,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpService } from './core/http.service';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
@@ -67,6 +68,8 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     ReactiveFormsModule,
+
+    AngularDateTimePickerModule,
   ],
   declarations: [
     AppComponent,
