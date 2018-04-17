@@ -8,7 +8,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpService } from './core/http.service';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
@@ -25,8 +24,7 @@ import {
   MatTabsModule, MatToolbarModule, MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { LoginComponent } from './home/login-dialog.component';
-import { HomeComponent } from './home/home.component';
+
 @NgModule({
   imports: [
     AppRoutingModule,
