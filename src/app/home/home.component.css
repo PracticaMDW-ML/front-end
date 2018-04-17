@@ -7,6 +7,6 @@
 }
 
 img{
-  display: block;
-  width: 35%;
+  display: flex;
+  height: stretch;
 }
