@@ -1,7 +1,7 @@
-import { Services } from './typeRoom.model';
+//import { Services } from './typeRoom.model';
 
-export interface User {
-  servicios
+export interface Habitacion {
+  servicios?: string;
   mobile: number;
   username: string;
   email?: string;
