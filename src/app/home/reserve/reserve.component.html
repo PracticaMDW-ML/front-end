@@ -12,23 +12,22 @@
   <div fxFlex>
     <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
 
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker2" placeholder="Fecha de entrada">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
+      <div fxFlex>
+        Fecha entrada
+        <angular2-date-picker [(ngModel)]="dateEntrada" [settings]="settings"></angular2-date-picker>
+      </div>
 
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker3" placeholder="Fecha de salida">
-        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-        <mat-datepicker #picker3></mat-datepicker>
-      </mat-form-field>
-
-      <div fxFlex="10%">
-        <button mat-raised-button (click)="login()">Confirmar reserva</button>
+      <div fxFlex>
+        Fecha salida
+        <angular2-date-picker [(ngModel)]="dateSalida" [settings]="settings"></angular2-date-picker>
       </div>
     </div>
-
+    <br>
+    <div fxFlex>
+      <button mat-raised-button color="primary" (click)="login()">Confirmar reserva
+        <mat-icon>payment</mat-icon>
+      </button>
+    </div>
 
     <h2>Reservas existentes</h2>
 
