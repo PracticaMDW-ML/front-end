@@ -13,11 +13,18 @@ export class ReserveComponent implements OnInit {
 
   static URL = 'reserve';
 
-  date = new FormControl(new Date());
-  serializedDate = new FormControl((new Date()).toISOString());
+  dateEntrada: Date = new Date();
+  dateSalida: Date = new Date();
+  settings = {
+    bigBanner: true,
+    timePicker: true,
+    format: 'dd-MM-yyyy hh:mm',
+    defaultOpen: false
+  };
 
   constructor(public payDialog: MatDialog, private router: Router) {
   }
+
   ngOnInit(): void {
   }
 
