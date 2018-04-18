@@ -1,60 +1,50 @@
-<h1>Book Room Component</h1>
+<h1>Room Suite</h1>
 
 <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
 
-    <div class="info-card-container">
-        <mat-card>
-            <img mat-card-image
-                src="https://thumbnails.trvl-media.com/K3BoWkaFmlj67y-4hH9NRjMNlp8=/773x515/smart/filters:quality(60)/images.trvl-media.com/hotels/11000000/10620000/10611400/10611379/8a564c25_z.jpg"
-                alt="Photo of a Shiba Inu">
-            <mat-card-title>Suite</mat-card-title>
-        </mat-card>
-    </div>
-
-    <div fxFlex>
-
-        <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
-
-                <div fxFlex=10%>
-
-                    Fecha entrada <angular2-date-picker [(ngModel)]="date" [settings]="settings"></angular2-date-picker>
-
-                </div>
-
-                <div fxFlex="10%">
+  <div class="info-card-container">
+    <img
+      src="https://thumbnails.trvl-media.com/K3BoWkaFmlj67y-4hH9NRjMNlp8=/773x515/smart/filters:quality(60)/images.trvl-media.com/hotels/11000000/10620000/10611400/10611379/8a564c25_z.jpg"
+      alt="Photo of a Shiba Inu">
+  </div>
 
 
-                    Fecha salida <angular2-date-picker [(ngModel)]="date" [settings]="settings"></angular2-date-picker>
+  <div fxFlex>
+    <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
 
-                </div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Fecha de entrada">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
 
-                <div fxFlex="10%">
-                    <button mat-raised-button (click)="login()">Confirmar reserva</button>
-                </div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker3" placeholder="Fecha de salida">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
 
-                <div fxFlex>
-
-
-
-                    </div>
-
-        </div>
-
-
-
-        <h2>Reservas existentes</h2>
-    <p>01-05-2018 8:00 / 01-05-2018 12:00</p>
-    <p>01-06-2018 1:00 / 01-06-2018 2:00</p>
-    <p>01-06-2018 4:00 / 01-06-2018 7:00</p>
-
-
-
-
+      <div fxFlex="10%">
+        <button mat-raised-button (click)="login()">Confirmar reserva</button>
+      </div>
     </div>
 
 
+    <h2>Reservas existentes</h2>
 
-
-
+    <table style="width:100%">
+      <tr>
+        <th>Fecha Entrada</th>
+        <th>Fecha Salida</th>
+      </tr>
+      <tr>
+        <td>01-05-2018 8:00</td>
+        <td>01-05-2018 12:00</td>
+      </tr>
+      <tr>
+        <td>01-05-2018 8:00</td>
+        <td>01-05-2018 12:00</td>
+      </tr>
+    </table>
+  </div>
 </div>
-

@@ -1,12 +1,5 @@
-.info-card-container {
-  display: flex;
-  flex-flow: wrap;
-}
-.info-card-container .mat-card {
-  margin: 0 16px 16px 0;
-  width: 300px;
-}
 
-.mat-raised-button{
-  margin: 10px;
+img {
+  width: 100%;
+  height: auto;
 }
