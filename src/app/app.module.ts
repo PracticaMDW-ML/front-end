@@ -11,6 +11,8 @@ import { NgModule } from '@angular/core';
 import { HttpService } from './core/http.service';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
+import { ReservaService } from './home/shared/reserva.service';
+
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
   MatCardModule, MatCheckboxModule, MatChipsModule,
@@ -79,6 +81,7 @@ import {
   bootstrap: [AppComponent],
   providers: [
     HttpService,
+    ReservaService,
   ]
 })
 
