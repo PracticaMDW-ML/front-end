@@ -1,4 +1,4 @@
-export enum TypeRoom {
+export enum RoomType {
   INDIVIDUAL = 'INDIVIDUAL',
   DOBLE = 'DOBLE',
   TRIPLE = 'TRIPLE',
