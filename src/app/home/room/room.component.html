@@ -1,7 +1,7 @@
 <div class="info-card-container">
   <mat-card *ngFor='let room of data'>
     <img mat-card-image
-         src="https://thumbnails.trvl-media.com/K3BoWkaFmlj67y-4hH9NRjMNlp8=/773x515/smart/filters:quality(60)/images.trvl-media.com/hotels/11000000/10620000/10611400/10611379/8a564c25_z.jpg"
+         src="{{room.imagen}}"
          alt="Photo of a Shiba Inu">
     <mat-card-title>{{room.tipoHabitacion}}</mat-card-title>
     <mat-card-content>
