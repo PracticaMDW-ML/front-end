@@ -28,22 +28,6 @@
         <mat-icon>payment</mat-icon>
       </button>
     </div>
-
-    <h2>Reservas existentes</h2>
-
-    <table style="width:100%">
-      <tr>
-        <th>Fecha Entrada</th>
-        <th>Fecha Salida</th>
-      </tr>
-      <tr>
-        <td>01-05-2018 8:00</td>
-        <td>01-05-2018 12:00</td>
-      </tr>
-      <tr>
-        <td>01-05-2018 8:00</td>
-        <td>01-05-2018 12:00</td>
-      </tr>
-    </table>
+    <app-crud [title]="title" [columns]="columns" [deleteAction]="false" [readAction]="false" [data]="reservas"></app-crud>
   </div>
 </div>

@@ -15,7 +15,8 @@ export class ReserveComponent implements OnInit {
   static URL = 'reservas';
   reservas: Reserve[];
   reserva: Reserve;
-
+  title = 'Reservas existentes';
+  columns = ['fechaEntrada', 'fechaSalida', 'precio'];
   dateEntrada: Date = new Date();
   dateSalida: Date = new Date();
   settings = {
