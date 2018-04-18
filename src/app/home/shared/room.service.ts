@@ -1,5 +1,4 @@
 import {HttpService} from '../../core/http.service';
-import {MatSnackBar} from '@angular/material';
 import {Room} from './room.model';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
@@ -9,7 +8,7 @@ export class RoomService {
 
   static END_POINT = '/habitaciones';
 
-  constructor(private httpService: HttpService, public snackBar: MatSnackBar) {
+  constructor(private httpService: HttpService) {
   }
 
   readAll(): Observable<Room[]> {

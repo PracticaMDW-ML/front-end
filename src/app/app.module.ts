@@ -10,7 +10,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { HttpService } from './core/http.service';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
-import { ReservaService } from './home/shared/reserva.service';
+import { ReserveService } from './home/shared/reserve.service';
 import { RoomService } from './home/shared/room.service';
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
@@ -81,6 +81,8 @@ import {
   bootstrap: [AppComponent],
   providers: [
     HttpService,
+    ReserveService,
+    RoomService
   ]
 })
 
