@@ -5,6 +5,8 @@ import {PayComponent} from './pay-dialog.component';
 import {Reserve} from '../shared/reserve.model';
 import {ReserveService} from '../shared/reserve.service';
 
+import {ActivatedRoute} from "@angular/router";
+
 @Component({
   templateUrl: 'reserve.component.html',
   styleUrls: ['reserve.component.css']
@@ -12,7 +14,7 @@ import {ReserveService} from '../shared/reserve.service';
 
 export class ReserveComponent implements OnInit {
 
-  static URL = 'reservas';
+  static URL = 'reservas/:room';
   reservas: Reserve[];
   reserva: Reserve;
   title = 'Reservas existentes';
@@ -23,8 +25,11 @@ export class ReserveComponent implements OnInit {
     bigBanner: true, timePicker: true, format: 'dd-MM-yyyy hh:mm', defaultOpen: false
   };
 
+  roomImage: string;
 
-  constructor(public payDialog: MatDialog, private router: Router, private reserveService: ReserveService) {
+
+  constructor(public payDialog: MatDialog, private reserveService: ReserveService, private route: ActivatedRoute) {
+    this.route.params.subscribe( params => this.roomImage = params['room']);
   }
 
   ngOnInit(): void {
