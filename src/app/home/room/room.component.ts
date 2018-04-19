@@ -24,8 +24,8 @@ export class RoomComponent implements OnDestroy {
 
   }
 
-  state() {
-    this.router.navigate([HomeComponent.URL, ReserveComponent.URL]);
+  state(image: string) {
+    this.router.navigate(['home/reservas', image]);
   }
 
   ngOnDestroy(): void {
