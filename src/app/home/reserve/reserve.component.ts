@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialog} from '@angular/material';
-import {Router} from '@angular/router';
-import {PayComponent} from './pay-dialog.component';
-import {Reserve} from '../shared/reserve.model';
-import {ReserveService} from '../shared/reserve.service';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { PayComponent } from './pay-dialog.component';
+import { Reserve } from '../shared/reserve.model';
+import { ReserveService } from '../shared/reserve.service';
 import { RoomDataService } from '../shared/roomData.service';
 import { Room } from '../shared/room.model';
 
@@ -38,12 +38,22 @@ export class ReserveComponent implements OnInit {
 
   synchronize() {
     this.reserveService.readAll().subscribe(data => {
-      this.reservas = data;
+      this.reservasHabitacion( data );
     });
   }
 
+  reservasHabitacion( data: Reserve[] ) {
+    this.reservas = [];
+
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].habitacion.imagen === this.room.imagen) {
+        this.reservas.push(data[i]);
+      }
+    }
+  }
+
   create(): void {
-    this.reserva = {fechaEntrada: this.dateEntrada, fechaSalida: this.dateSalida, precio: 0, abonada: false};
+    this.reserva = { fechaEntrada: this.dateEntrada, fechaSalida: this.dateSalida, precio: 0, abonada: false };
     this.reserveService.create(this.reserva).subscribe(
 
     );
