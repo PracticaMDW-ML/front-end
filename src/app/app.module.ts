@@ -12,6 +12,8 @@ import { HttpService } from './core/http.service';
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { ReserveService } from './home/shared/reserve.service';
 import { RoomService } from './home/shared/room.service';
+import { RoomDataService } from './home/shared/roomData.service';
+
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
   MatCardModule, MatCheckboxModule, MatChipsModule,
@@ -82,7 +84,8 @@ import {
   providers: [
     HttpService,
     ReserveService,
-    RoomService
+    RoomService,
+    RoomDataService
   ]
 })
 
