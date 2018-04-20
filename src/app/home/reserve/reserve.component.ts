@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {PayComponent} from './pay-dialog.component';
 import {Reserve} from '../shared/reserve.model';
 import {ReserveService} from '../shared/reserve.service';
+import { RoomDataService } from '../shared/roomData.service';
+import { Room } from '../shared/room.model';
 
 @Component({
   templateUrl: 'reserve.component.html',
@@ -23,8 +25,11 @@ export class ReserveComponent implements OnInit {
     bigBanner: true, timePicker: true, format: 'dd-MM-yyyy hh:mm', defaultOpen: false
   };
 
+  room: Room;
 
-  constructor(public payDialog: MatDialog, private router: Router, private reserveService: ReserveService) {
+
+  constructor(public payDialog: MatDialog, private reserveService: ReserveService, private roomDataService: RoomDataService) {
+    this.roomDataService.currentRoom.subscribe(message => this.room = message);
   }
 
   ngOnInit(): void {
