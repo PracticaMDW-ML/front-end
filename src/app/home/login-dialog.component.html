@@ -2,14 +2,14 @@
 <h1 mat-dialog-title aling="center">Inicia sesión</h1>
 <div mat-dialog-content>
   <mat-form-field>
-      <input matInput placeholder="Email">
+      <input matInput type="text" placeholder="Usuario" [(ngModel)]="usuario">
   </mat-form-field>
   <mat-form-field>
-      <input matInput placeholder="Contraseña">
+    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password">
   </mat-form-field>
 </div>
 <div>
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-around center">
-    <button mat-raised-button color="primary" cdkFocusInitial>Iniciar sesión</button>
+    <button mat-raised-button [mat-dialog-close]="this" color="primary" cdkFocusInitial>Iniciar sesión</button>
   </div>
 </div>
