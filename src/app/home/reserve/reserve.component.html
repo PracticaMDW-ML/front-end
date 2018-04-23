@@ -1,21 +1,12 @@
 <h1>Room {{room.tipoHabitacion}}</h1>
 
 <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
-
   <div class="info-card-container">
-    <img
-    src="{{room.imagen}}"
-      alt="Photo of a Shiba Inu">
-      
+    <img src="{{room.imagen}}" alt="Photo room">
   </div>
 
-
   <div fxFlex>
-      
     <div fxLayout="row" fxLayoutWrap fxFill fxLayoutAlign="start start" fxLayoutGap="10px">
-
-      
-
       <div fxFlex>
         Fecha entrada
         <angular2-date-picker [(ngModel)]="dateEntrada" [settings]="settings"></angular2-date-picker>
@@ -38,6 +29,6 @@
         <mat-icon>payment</mat-icon>
       </button>
     </div>
-    <app-crud [title]="title" [columns]="columns" [deleteAction]="false" [readAction]="false" [data]="reservas"></app-crud>
+    <app-crud [title]="title" [columns]="columns" [data]="reservas"></app-crud>
   </div>
 </div>
