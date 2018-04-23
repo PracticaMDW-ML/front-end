@@ -1,10 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
-import {Router} from '@angular/router';
-import {HomeComponent} from '../home.component';
-import {ReserveComponent} from '../reserve/reserve.component';
-import {RoomService} from '../shared/room.service';
-import {Room} from '../shared/room.model';
-import {RoomDataService} from '../shared/roomData.service';
+import { Component, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { HomeComponent } from '../home.component';
+import { ReserveComponent } from '../reserve/reserve.component';
+import { RoomService } from '../shared/room.service';
+import { Room } from '../shared/room.model';
 
 @Component({
   templateUrl: 'room.component.html',
@@ -18,7 +17,7 @@ export class RoomComponent implements OnDestroy {
 
   data: Room[];
 
-  constructor(private router: Router, private roomService: RoomService, private roomDataService: RoomDataService) {
+  constructor(private router: Router, private roomService: RoomService) {
     this.synchronize();
   }
 
@@ -27,8 +26,7 @@ export class RoomComponent implements OnDestroy {
   }
 
   reservate(room: Room) {
-    this.roomDataService.changeRoom(room);
-    this.router.navigate([HomeComponent.URL, ReserveComponent.URL]);
+    this.router.navigate(['home/reservas', room._id]);
   }
 
   ngOnDestroy(): void {
