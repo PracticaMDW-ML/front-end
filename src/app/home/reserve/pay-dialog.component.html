@@ -3,22 +3,26 @@
 
   <mat-tab-group class="demo-tab-group">
     <mat-tab label="PayPal">
+      <form [formGroup]="payPalForm">
       <img style="display: block; margin: auto;"
            src="https://www.jamroom.net/networkmarket/image/market_image/104/large/_v=1513011920"
            alt="PayPal">
       <div class="demo-tab-content">
         <div style="display: grid;">
           <mat-form-field>
-            <input matInput placeholder="Email">
+            <input matInput placeholder="Email" type="text" [(ngModel)]="email" [formControl]="emailFormControl" required>
+            <mat-error *ngIf="emailFormControl.invalid">Por favor ingresa tu correo</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input matInput placeholder="Contraseña">
+            <input matInput placeholder="Contraseña" type="password" [(ngModel)]="password" [formControl]="passwordFormControl" required>
+            <mat-error *ngIf="passwordFormControl.invalid">Por favor ingresa tu contraseña</mat-error>
           </mat-form-field>
         </div>
         <div class="buttons_dialog">
-          <button mat-raised-button color="primary" cdkFocusInitial>Pagar</button>
+          <button mat-raised-button color="primary" cdkFocusInitial [mat-dialog-close]="payPalForm.valid" [disabled]="payPalForm.invalid">Pagar</button>
         </div>
       </div>
+      </form>
     </mat-tab>
     <mat-tab label="Tarjeta">
       <div class="demo-tab-content">
