@@ -9,6 +9,7 @@ import { Room } from '../shared/room.model';
 import { RoomType } from '../shared/roomType.model';
 import { User } from '../shared/user.model';
 import { ActivatedRoute } from "@angular/router";
+import { UserService } from '../shared/user.service';
 
 @Component({
   templateUrl: 'reserve.component.html',
@@ -48,7 +49,7 @@ export class ReserveComponent implements OnInit {
   totalHoras: number;
 
   constructor(public payDialog: MatDialog, private snackBar: MatSnackBar,
-    private reserveService: ReserveService, private roomService: RoomService, private route: ActivatedRoute) {
+    private reserveService: ReserveService, private roomService: RoomService, private userService: UserService, private route: ActivatedRoute) {
 
     this.route.params.subscribe(params => this.roomId = params['id']);
     this.room = { imagen: '', tipoHabitacion: RoomType.INDIVIDUAL };
@@ -67,14 +68,14 @@ export class ReserveComponent implements OnInit {
       this.reserveService.readAll().subscribe(reserveData => {
         this.reservasHabitacion(reserveData);
       });
+      this.userService.readAll().subscribe(userData => {
+        this.usuario = userData[2];
+      });
     });
   }
 
   reservasHabitacion(data: Reserve[]) {
     this.reservas = [];
-
-    console.log(data);
-
     for (let i = 0; i < data.length; i++) {
       if (data[i].habitacion.imagen === this.room.imagen) {
         this.reservas.push(data[i]);
@@ -111,7 +112,6 @@ export class ReserveComponent implements OnInit {
       usuario: this.usuario,
     };
 
-    console.log(this.reserva);
     if (this.validate(this.reserva)) {
       this.create(this.reserva);
       const dialogRef = this.payDialog.open(PayComponent);
