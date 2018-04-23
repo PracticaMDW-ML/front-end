@@ -4,10 +4,10 @@ import {HomeComponent} from '../home.component';
 import {ReserveComponent} from '../reserve/reserve.component';
 import {RoomService} from '../shared/room.service';
 import {Room} from '../shared/room.model';
-import { RoomDataService } from '../shared/roomData.service';
+import {RoomDataService} from '../shared/roomData.service';
 
 @Component({
-  templateUrl: `room.component.html`,
+  templateUrl: 'room.component.html',
   styleUrls: ['room.component.css']
 })
 
@@ -19,14 +19,16 @@ export class RoomComponent implements OnDestroy {
   data: Room[];
 
   constructor(private router: Router, private roomService: RoomService, private roomDataService: RoomDataService) {
-    this.roomService.readAll().subscribe(
-      data => this.data = data
-    );
+    this.synchronize();
 
   }
 
+  synchronize() {
+    this.roomService.readAll().subscribe(data => this.data = data);
+  }
+
   reservate(room: Room) {
-    this.roomDataService.changeRoom( room );
+    this.roomDataService.changeRoom(room);
     this.router.navigate([HomeComponent.URL, ReserveComponent.URL]);
   }
 
