@@ -10,17 +10,22 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
+import {User} from "../home/shared/user.model";
 
 @Injectable()
 export class HttpService {
 
     static API_END_POINT = 'http://localhost:3000';
 
+    static LOGIN = '/auth';
+
     private params: URLSearchParams;
 
     private headers: Headers;
 
     private responseType: ResponseContentType;
+
+    private token: string;
 
     constructor(private http: Http, private snackBar: MatSnackBar, private router: Router) {
         this.resetOptions();
@@ -40,6 +45,20 @@ export class HttpService {
     header(key: string, value: string): HttpService {
         this.headers.append(key, value);
         return this;
+    }
+
+    login(username: string, password: string): Observable<boolean> {
+      const user: User = {usuario: username, password: password};
+      return this.post(HttpService.LOGIN, user).map(
+        token => {
+          this.token = token; return true; },
+        error => {
+          this.token = null; return false; },
+      );
+    }
+
+    isAuthenticated(): boolean {
+      return this.token ? true : false;
     }
 
     get(endpoint: string): Observable<any> {

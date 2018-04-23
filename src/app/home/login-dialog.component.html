@@ -10,10 +10,11 @@
       <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" [formControl]="passwordFormControl" required>
       <mat-error *ngIf="passwordFormControl.invalid">Por favor ingresa tu contraseña</mat-error>
     </mat-form-field>
+
   </div>
   <div>
     <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-around center">
-      <button mat-raised-button color="primary" [mat-dialog-close]="this" [disabled]="loginForm.invalid">Iniciar sesión</button>
+      <button mat-raised-button (click)="login()" color="primary" [mat-dialog-close]="this" [disabled]="loginForm.invalid">Iniciar sesión</button>
     </div>
   </div>
 </form>
