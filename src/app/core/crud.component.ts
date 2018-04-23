@@ -1,5 +1,5 @@
-import {Input, Output, EventEmitter, Component} from '@angular/core';
-import {MatTableDataSource, MatSort} from '@angular/material';
+import {Input, Component} from '@angular/core';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   templateUrl: 'crud.component.html',

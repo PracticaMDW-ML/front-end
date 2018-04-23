@@ -20,7 +20,6 @@ export class RoomComponent implements OnDestroy {
 
   constructor(private router: Router, private roomService: RoomService, private roomDataService: RoomDataService) {
     this.synchronize();
-
   }
 
   synchronize() {

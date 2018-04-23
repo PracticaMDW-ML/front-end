@@ -11,15 +11,21 @@
         Fecha entrada
         <angular2-date-picker [(ngModel)]="dateEntrada" [settings]="settings"></angular2-date-picker>
       </div>
-
+      
       <div fxFlex>
-        Fecha salida
-        <angular2-date-picker [(ngModel)]="dateSalida" [settings]="settings"></angular2-date-picker>
+        <mat-form-field>
+          <mat-select placeholder="Horas" [(ngModel)]="totalHoras">
+            <mat-option *ngFor="let hour of hours" [value]="hour.value">
+              {{ hour.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
+
     </div>
     <br>
     <div fxFlex>
-      <button mat-raised-button color="primary" (click)="login()">Confirmar reserva
+      <button mat-raised-button color="primary" (click)="confirmarReserva()">Confirmar reserva
         <mat-icon>payment</mat-icon>
       </button>
     </div>
