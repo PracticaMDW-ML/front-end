@@ -18,7 +18,7 @@ export class RoomComponent implements OnDestroy {
   static URL = 'room';
   data: Room[];
 
-  constructor(private router: Router, private roomService: RoomService, private roomDataService: RoomDataService, public loginDialog: MatDialog) {
+  constructor(private router: Router, private roomDataService: RoomDataService, public loginDialog: MatDialog) {
     this.synchronize();
   }
 
