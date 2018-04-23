@@ -49,10 +49,8 @@ export class HttpService {
 
     login(username: string, password: string): Observable<any> {
       const user: User = {usuario: username, password: password};
-      const isLogged: Subject<boolean> = new Subject();
-      alert('eeeeee');
       return this.post(HttpService.LOGIN, user).map(
-        token => this.token = token,
+        res => this.token = res.token,
         error => this.token = null,
       );
     }
