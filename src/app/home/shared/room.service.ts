@@ -1,7 +1,7 @@
-import {HttpService} from '../../core/http.service';
-import {Room} from './room.model';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { HttpService } from '../../core/http.service';
+import { Room } from './room.model';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RoomService {
@@ -13,5 +13,13 @@ export class RoomService {
 
   readAll(): Observable<Room[]> {
     return this.httpService.get(RoomService.END_POINT);
+  }
+
+  read(id: string): Observable<Room> {
+    return this.httpService.get(RoomService.END_POINT + '/' + id).map(
+      data => {
+        return data;
+      }
+    );
   }
 }
