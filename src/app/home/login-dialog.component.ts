@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LoginService} from "./shared/login.service";
+import {LoginService} from './shared/login.service';
 
 @Component({
   selector: 'app-dialog-login',
@@ -11,8 +11,8 @@ import {LoginService} from "./shared/login.service";
 
 export class LoginComponent {
 
-  usuario: string;
-  password: string;
+  usuario: string = 'diego69';
+  password: string = 'diego69';
   passwordFormControl: FormControl;
   userFormControl: FormControl;
 
@@ -21,19 +21,17 @@ export class LoginComponent {
     password: this.passwordFormControl = new FormControl('', [Validators.required])
   });
 
-  constructor(private snackBar: MatSnackBar, public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private loginService: LoginService) {
-  }
+  constructor(private loginService: LoginService, public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar) { }
 
   login() {
     this.loginService.login(this.usuario, this.password).subscribe(
       exito => {
         if (exito) {
-        // redirigir a reservar
+          alert('Autenticado con exito');
         } else {
           this.showErrorAuthentication();
         }
       },
-      error => this.showErrorAuthentication(),
     );
   }
 

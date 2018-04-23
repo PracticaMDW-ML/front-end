@@ -10,6 +10,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
+import {User} from "../home/shared/user.model";
 
 @Injectable()
 export class HttpService {
@@ -47,8 +48,8 @@ export class HttpService {
     }
 
     login(username: string, password: string): Observable<boolean> {
-      const user = {username: username, password: password};
-      return this.post(HttpService.API_END_POINT + HttpService.LOGIN, user).map(
+      const user: User = {usuario: username, password: password};
+      return this.post(HttpService.LOGIN, user).map(
         token => {
           this.token = token; return true; },
         error => {
