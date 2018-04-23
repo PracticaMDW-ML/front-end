@@ -47,13 +47,11 @@ export class HttpService {
         return this;
     }
 
-    login(username: string, password: string): Observable<boolean> {
+    login(username: string, password: string): Observable<any> {
       const user: User = {usuario: username, password: password};
       return this.post(HttpService.LOGIN, user).map(
-        token => {
-          this.token = token; return true; },
-        error => {
-          this.token = null; return false; },
+        res => this.token = res.token,
+        error => this.token = null,
       );
     }
 
