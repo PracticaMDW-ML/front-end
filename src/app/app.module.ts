@@ -26,7 +26,7 @@ import {
   MatTabsModule, MatToolbarModule, MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { UserService } from './home/shared/user.service';
+import {LoginService} from "./home/shared/login.service";
 
 
 @NgModule({
@@ -85,7 +85,7 @@ import { UserService } from './home/shared/user.service';
     HttpService,
     ReserveService,
     RoomService,
-    UserService
+    LoginService,
   ]
 })
 
