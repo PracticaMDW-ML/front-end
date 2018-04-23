@@ -1,9 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { HomeComponent } from '../home.component';
-import { ReserveComponent } from '../reserve/reserve.component';
+import {Component, OnDestroy} from '@angular/core';
+import {Router} from '@angular/router';
+import {Room} from '../shared/room.model';
+import {MatDialog} from '@angular/material';
+import {LoginComponent} from '../login-dialog.component';
 import { RoomService } from '../shared/room.service';
-import { Room } from '../shared/room.model';
 
 @Component({
   templateUrl: 'room.component.html',
@@ -13,11 +13,9 @@ import { Room } from '../shared/room.model';
 export class RoomComponent implements OnDestroy {
 
   static URL = 'room';
-  reserve: boolean;
-
   data: Room[];
 
-  constructor(private router: Router, private roomService: RoomService) {
+  constructor(private router: Router, private roomService: RoomService, public loginDialog: MatDialog) {
     this.synchronize();
   }
 
@@ -26,7 +24,14 @@ export class RoomComponent implements OnDestroy {
   }
 
   reservate(room: Room) {
-    this.router.navigate(['home/reservas', room._id]);
+    const token: string = localStorage.getItem('tokenHPH');
+    if (token) {
+      this.router.navigate(['home/reservas', room._id]);
+    } else {
+      const dialogRef = this.loginDialog.open(LoginComponent, {
+        width: '250px'
+      });
+    }
   }
 
   ngOnDestroy(): void {
