@@ -15,7 +15,7 @@ export class PayComponent {
   emailFormControl: FormControl;
 
   payPalForm: FormGroup = new FormGroup({
-    usuario: this.emailFormControl = new FormControl('', [Validators.required]),
+    email: this.emailFormControl = new FormControl('', [ Validators.email, Validators.required]),
     password: this.passwordFormControl = new FormControl('', [Validators.required])
   });
 

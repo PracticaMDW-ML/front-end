@@ -10,8 +10,8 @@
       <div class="demo-tab-content">
         <div style="display: grid;">
           <mat-form-field>
-            <input matInput placeholder="Email" type="text" [(ngModel)]="email" [formControl]="emailFormControl" required>
-            <mat-error *ngIf="emailFormControl.invalid">Por favor ingresa tu correo</mat-error>
+            <input matInput placeholder="Email" type="email" [(ngModel)]="email" [formControl]="emailFormControl" required>
+            <mat-error *ngIf="emailFormControl.invalid">Por favor ingresa un correo valido</mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput placeholder="Contraseña" type="password" [(ngModel)]="password" [formControl]="passwordFormControl" required>

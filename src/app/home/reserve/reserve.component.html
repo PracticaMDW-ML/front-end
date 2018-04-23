@@ -14,7 +14,7 @@
       
       <div fxFlex>
         <mat-form-field>
-          <mat-select placeholder="Horas" [(ngModel)]="totalHoras">
+          <mat-select placeholder="Horas" [(ngModel)]="totalHoras" [(value)]="totalHoras">
             <mat-option *ngFor="let hour of hours" [value]="hour.value">
               {{ hour.value }}
             </mat-option>
