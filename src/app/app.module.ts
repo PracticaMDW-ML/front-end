@@ -27,6 +27,7 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import {LoginService} from "./home/shared/login.service";
+import { UserService } from './home/shared/user.service';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import {LoginService} from "./home/shared/login.service";
     ReserveService,
     RoomService,
     LoginService,
+    UserService
   ]
 })
 
