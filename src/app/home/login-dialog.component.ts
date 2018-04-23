@@ -26,6 +26,7 @@ export class LoginComponent {
   login() {
     this.loginService.login(this.usuario, this.password).subscribe(
       exito => {
+        alert('exito ' + exito);
         if (exito) {
           alert('Autenticado con exito');
         } else {

@@ -49,12 +49,19 @@ export class HttpService {
 
     login(username: string, password: string): Observable<boolean> {
       const user: User = {usuario: username, password: password};
-      return this.post(HttpService.LOGIN, user).map(
+      const isLogged: Subject<boolean> = new Subject();
+      this.post(HttpService.LOGIN, user).subscribe(
         token => {
-          this.token = token; return true; },
-        error => {
-          this.token = null; return false; },
+          alert('token ' + token);
+          if (token) {
+            this.token = token;
+            isLogged.next(true);
+          } else {
+            isLogged.next(false);
+          }
+        },
       );
+      return isLogged.asObservable();
     }
 
     isAuthenticated(): boolean {
