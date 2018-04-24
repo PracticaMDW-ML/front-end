@@ -15,4 +15,12 @@ export class UserService {
     return this.httpService.get(UserService.END_POINT);
   }
 
+  read(usuario: string): Observable<User> {
+    return this.httpService.get(UserService.END_POINT + '/' + usuario).map(
+      data => {
+        return data;
+      }
+    );
+  }
+
 }

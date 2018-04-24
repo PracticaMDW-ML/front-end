@@ -28,6 +28,7 @@ export class HttpService {
     private responseType: ResponseContentType;
 
     private token: string;
+    private usuario: string;
 
     constructor(private http: Http, private snackBar: MatSnackBar, private router: Router) {
         this.resetOptions();
@@ -51,6 +52,7 @@ export class HttpService {
 
     login(username: string, password: string): Observable<any> {
       const user: User = {usuario: username, password: password};
+      this.usuario = username;
       return this.post(HttpService.LOGIN, user).map(
         res => this.token = res.token,
         error => this.token = null,
@@ -59,6 +61,10 @@ export class HttpService {
 
     isAuthenticated(): boolean {
       return this.token ? true : false;
+    }
+
+    getUsuario(): string{
+        return this.usuario;
     }
 
     get(endpoint: string): Observable<any> {

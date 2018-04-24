@@ -25,7 +25,7 @@
     </div>
     <br>
     <div fxFlex>
-      <button mat-raised-button color="primary" (click)="confirmarReserva()">Confirmar reserva
+      <button mat-raised-button color="primary" (click)="confirmarReserva()" [disabled]="isNotAuthenticated()">Confirmar reserva
         <mat-icon>payment</mat-icon>
       </button>
     </div>
