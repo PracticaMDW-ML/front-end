@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from './shared/login.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dialog-login',
@@ -21,18 +22,25 @@ export class LoginComponent {
     password: this.passwordFormControl = new FormControl('', [Validators.required])
   });
 
-  constructor(private loginService: LoginService, public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private loginService: LoginService, public dialogRef: MatDialogRef<LoginComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar) { }
 
   login() {
     this.loginService.login(this.usuario, this.password).subscribe(
       exito => {
-        alert('exito ' + exito);
         if (exito) {
-          alert('Autenticado con exito');
+          this.router.navigate(['home/reservas', this.data.idRoom]);
         } else {
-          this.showErrorAuthentication();
+          this.loginService.registerUser(this.usuario, this.password);
+          this.loginService.login(this.usuario, this.password).subscribe(
+            exito2 => {
+              if (exito2) {
+                this.router.navigate(['home/reservas', this.data.idRoom]);
+              } else {
+                this.showErrorAuthentication();
+              }
+            });
         }
-      },
+      }
     );
   }
 
