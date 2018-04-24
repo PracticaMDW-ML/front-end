@@ -69,15 +69,11 @@ export class HttpService {
                 });
     }
 
-    registerUser(username: string, password: string): Observable<any> {
-      alert('registerUser');
+    registerUser(username: string, password: string): Observable<boolean> {
       const user: User = {usuario: username, password: password};
       return this.post(HttpService.CREATE_USER, user).map(
-        res => {this.snackBar.open('Una cuenta se creo automaticamente.', 'Error', {
-          duration: 8000
-        });
-        },
-        error => this.handleError(error),
+        res => true,
+        error => false,
       );
     }
 
