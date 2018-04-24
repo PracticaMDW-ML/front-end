@@ -78,6 +78,7 @@ export class HttpService {
     }
 
     post(endpoint: string, body?: Object): Observable<any> {
+        this.header('Authorization', this.token);
         return this.http.post(HttpService.API_END_POINT + endpoint, body, this.createOptions()).map(
             response => this.extractData(response)).catch(
                 error => {
@@ -86,6 +87,7 @@ export class HttpService {
     }
 
     delete(endpoint: string): Observable<any> {
+        this.header('Authorization', this.token);
         return this.http.delete(HttpService.API_END_POINT + endpoint, this.createOptions()).map(
             response => this.extractData(response)).catch(
                 error => {
@@ -94,6 +96,7 @@ export class HttpService {
     }
 
     put(endpoint: string, body?: Object): Observable<any> {
+        this.header('Authorization', this.token);
         return this.http.put(HttpService.API_END_POINT + endpoint, body, this.createOptions()).map(
             response => this.extractData(response)).catch(
                 error => {
@@ -102,6 +105,7 @@ export class HttpService {
     }
 
     patch(endpoint: string, body?: Object): Observable<any> {
+        this.header('Authorization', this.token);
         return this.http.patch(HttpService.API_END_POINT + endpoint, body, this.createOptions()).map(
             response => this.extractData(response)).catch(
                 error => {

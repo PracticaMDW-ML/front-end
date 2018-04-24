@@ -10,6 +10,8 @@ import { RoomType } from '../shared/roomType.model';
 import { User } from '../shared/user.model';
 import { ActivatedRoute } from "@angular/router";
 import { UserService } from '../shared/user.service';
+import {HttpService} from "../../core/http.service";
+import {LoginComponent} from "../login-dialog.component";
 
 @Component({
   templateUrl: 'reserve.component.html',
@@ -48,8 +50,8 @@ export class ReserveComponent implements OnInit {
   ];
   totalHoras: number;
 
-  constructor(public payDialog: MatDialog, private snackBar: MatSnackBar,
-    private reserveService: ReserveService, private roomService: RoomService, private userService: UserService, private route: ActivatedRoute) {
+  constructor(public loginDialog: MatDialog, public payDialog: MatDialog, private snackBar: MatSnackBar,
+    private reserveService: ReserveService, private roomService: RoomService, private userService: UserService, private route: ActivatedRoute, private httpService: HttpService) {
 
     this.route.params.subscribe(params => this.roomId = params['id']);
     this.room = { imagen: '', tipoHabitacion: RoomType.INDIVIDUAL };
@@ -85,6 +87,9 @@ export class ReserveComponent implements OnInit {
 
   create(reserva: Reserve): void {
     this.reserveService.create(this.reserva).subscribe();
+    this.snackBar.open('Reserva realizada !', 'Info', {
+      duration: 8000
+    });
   }
 
   calculateDateSalida(): void {
@@ -100,26 +105,35 @@ export class ReserveComponent implements OnInit {
   }
 
   confirmarReserva(): void {
-
     this.calculateDateSalida();
-
     this.reserva = {
       fechaEntrada: this.dateEntrada,
       fechaSalida: this.dateSalida,
       precio: this.room.precioHora * this.totalHoras,
       abonada: false,
       habitacion: this.room,
-      usuario: this.usuario,
     };
-
-    if (this.validate(this.reserva)) {
-      this.create(this.reserva);
-      const dialogRef = this.payDialog.open(PayComponent);
+    if (this.httpService.isAuthenticated()) {
+      if (this.validate(this.reserva)) {
+        this.create(this.reserva);
+        const dialogRef = this.payDialog.open(PayComponent, {
+          data : {'idRoom': this.roomId},
+        });
+      } else {
+        this.snackBar.open('La habitación no está disponible en esa fecha. Consulte las reservas de la habitación en el listado.', 'Error', {
+          duration: 8000
+        });
+      }
     } else {
-      this.snackBar.open('La habitación no está disponible en esa fecha. Consulte las reservas de la habitación en el listado.', '', {
-        duration: 4000
+      this.snackBar.open('Antes de reservar, inicia sesión o indica tu email y contraseña para registrarte automaticamente.', 'Info', {
+        duration: 8000
+      });
+      const dialogRef = this.loginDialog.open(LoginComponent, {
+        width: '250px',
+        data : {'idRoom': this.roomId},
       });
     }
+
   }
 
   validate(reserva: Reserve): boolean {

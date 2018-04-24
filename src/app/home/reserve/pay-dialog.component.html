@@ -19,7 +19,7 @@
           </mat-form-field>
         </div>
         <div class="buttons_dialog">
-          <button mat-raised-button color="primary" cdkFocusInitial [mat-dialog-close]="payPalForm.valid" [disabled]="payPalForm.invalid">Pagar</button>
+          <button mat-raised-button (click)="pagar()" color="primary" cdkFocusInitial [mat-dialog-close]="payPalForm.valid" [disabled]="payPalForm.invalid">Pagar</button>
         </div>
       </div>
       </form>
@@ -68,7 +68,7 @@
 
         </form>
         <div class="buttons_dialog">
-          <button mat-raised-button color="primary" cdkFocusInitial>Pagar</button>
+          <button mat-raised-button color="primary" cdkFocusInitial (click)="pagar()">Pagar</button>
         </div>
       </div>
     </mat-tab>

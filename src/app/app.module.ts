@@ -28,6 +28,7 @@ import {
 } from '@angular/material';
 import {LoginService} from "./home/shared/login.service";
 import { UserService } from './home/shared/user.service';
+import {PayService} from "./home/shared/pay-dialog.service";
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { UserService } from './home/shared/user.service';
     ReserveService,
     RoomService,
     LoginService,
-    UserService
+    UserService,
+    PayService,
   ]
 })
 
