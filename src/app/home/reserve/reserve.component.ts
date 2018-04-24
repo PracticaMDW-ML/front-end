@@ -10,6 +10,7 @@ import { RoomType } from '../shared/roomType.model';
 import { User } from '../shared/user.model';
 import { ActivatedRoute } from "@angular/router";
 import { UserService } from '../shared/user.service';
+import { HttpService } from '../../core/http.service';
 
 @Component({
   templateUrl: 'reserve.component.html',
@@ -49,7 +50,7 @@ export class ReserveComponent implements OnInit {
   totalHoras: number;
 
   constructor(public payDialog: MatDialog, private snackBar: MatSnackBar,
-    private reserveService: ReserveService, private roomService: RoomService, private userService: UserService, private route: ActivatedRoute) {
+    private reserveService: ReserveService, private roomService: RoomService, private userService: UserService, private httpService: HttpService, private route: ActivatedRoute) {
 
     this.route.params.subscribe(params => this.roomId = params['id']);
     this.room = { imagen: '', tipoHabitacion: RoomType.INDIVIDUAL };
@@ -68,9 +69,6 @@ export class ReserveComponent implements OnInit {
       this.reserveService.readAll().subscribe(reserveData => {
         this.reservasHabitacion(reserveData);
       });
-      this.userService.readAll().subscribe(userData => {
-        this.usuario = userData[2];
-      });
     });
   }
 
@@ -84,7 +82,9 @@ export class ReserveComponent implements OnInit {
   }
 
   create(reserva: Reserve): void {
-    this.reserveService.create(this.reserva).subscribe();
+    this.reserveService.create(this.reserva).subscribe(data => {
+      this.synchronize();
+    });;
   }
 
   calculateDateSalida(): void {
@@ -99,27 +99,31 @@ export class ReserveComponent implements OnInit {
     }
   }
 
+  isNotAuthenticated(): boolean {
+    return this.httpService.isAuthenticated() == false;
+  }
+
   confirmarReserva(): void {
-
-    this.calculateDateSalida();
-
-    this.reserva = {
-      fechaEntrada: this.dateEntrada,
-      fechaSalida: this.dateSalida,
-      precio: this.room.precioHora * this.totalHoras,
-      abonada: false,
-      habitacion: this.room,
-      usuario: this.usuario,
-    };
-
-    if (this.validate(this.reserva)) {
-      this.create(this.reserva);
-      const dialogRef = this.payDialog.open(PayComponent);
-    } else {
-      this.snackBar.open('La habitación no está disponible en esa fecha. Consulte las reservas de la habitación en el listado.', '', {
-        duration: 4000
-      });
-    }
+    this.userService.read(this.httpService.getUsuario()).subscribe(userData => {
+      this.usuario = userData;
+      this.calculateDateSalida();
+      this.reserva = {
+        fechaEntrada: this.dateEntrada,
+        fechaSalida: this.dateSalida,
+        precio: this.room.precioHora * this.totalHoras,
+        abonada: false,
+        habitacion: this.room,
+        usuario: this.usuario,
+      };
+      if (this.validate(this.reserva)) {
+        this.create(this.reserva);
+        const dialogRef = this.payDialog.open(PayComponent);
+      } else {
+        this.snackBar.open('La habitación no está disponible en esa fecha. Consulte las reservas de la habitación en el listado.', '', {
+          duration: 4000
+        });
+      }
+    });
   }
 
   validate(reserva: Reserve): boolean {

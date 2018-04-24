@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LoginService} from './shared/login.service';
-import {Router} from "@angular/router";
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from './shared/login.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-dialog-login',
@@ -28,7 +28,9 @@ export class LoginComponent {
     this.loginService.login(this.usuario, this.password).subscribe(
       exito => {
         if (exito) {
-          this.router.navigate(['home/reservas', this.data.idRoom]);
+          if (this.data != null) {
+            this.router.navigate(['home/reservas', this.data.idRoom]);
+          }
         } else {
           this.loginService.registerUser(this.usuario, this.password);
           this.loginService.login(this.usuario, this.password).subscribe(
