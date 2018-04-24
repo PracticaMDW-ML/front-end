@@ -17,6 +17,8 @@ export class HttpService {
 
     static API_END_POINT = 'http://localhost:3000';
 
+    static CREATE_USER = '/usuarios';
+
     static LOGIN = '/auth';
 
     private params: URLSearchParams;
@@ -65,6 +67,18 @@ export class HttpService {
                 error => {
                     return this.handleError(error);
                 });
+    }
+
+    registerUser(username: string, password: string): Observable<any> {
+      alert('registerUser');
+      const user: User = {usuario: username, password: password};
+      return this.post(HttpService.CREATE_USER, user).map(
+        res => {this.snackBar.open('Una cuenta se creo automaticamente.', 'Error', {
+          duration: 8000
+        });
+        },
+        error => this.handleError(error),
+      );
     }
 
     post(endpoint: string, body?: Object): Observable<any> {

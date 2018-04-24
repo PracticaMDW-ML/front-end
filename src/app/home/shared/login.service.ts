@@ -10,6 +10,10 @@ export class LoginService {
   login(username: string, password: string): Observable<any> {
     return this.httpService.login(username, password);
   }
+
+  registerUser(username: string, password: string): Observable<any> {
+    return this.httpService.registerUser(username, password);
+  }
 }
 
 

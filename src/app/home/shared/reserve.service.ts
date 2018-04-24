@@ -12,9 +12,6 @@ export class ReserveService {
   }
 
   create(reserve: Reserve): Observable<void> {
-    // authToken para cuando se haga login
-    //return this.httpService.authToken().post(UserService.END_POINT, user).map(
-
     return this.httpService.post(ReserveService.END_POINT, reserve).map(data => {
       return data;
     });
