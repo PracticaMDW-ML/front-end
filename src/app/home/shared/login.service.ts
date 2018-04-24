@@ -7,7 +7,7 @@ export class LoginService {
 
   constructor(private httpService: HttpService) {}
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<any> {
     return this.httpService.login(username, password);
   }
 }
