@@ -11,7 +11,7 @@ export class ReserveService {
   constructor(private httpService: HttpService, private snackBar: MatSnackBar) {
   }
 
-  create(reserve: Reserve): Observable<void> {
+  create(reserve: Reserve): Observable<Reserve> {
     return this.httpService.post(ReserveService.END_POINT, reserve).map(data => {
       return data;
     });
