@@ -10,8 +10,8 @@ import { RoomType } from '../shared/roomType.model';
 import { User } from '../shared/user.model';
 import { ActivatedRoute } from "@angular/router";
 import { UserService } from '../shared/user.service';
-import {HttpService} from "../../core/http.service";
-import {LoginComponent} from "../login-dialog.component";
+import { HttpService } from "../../core/http.service";
+import { LoginComponent } from "../login-dialog.component";
 
 @Component({
   templateUrl: 'reserve.component.html',
@@ -70,9 +70,6 @@ export class ReserveComponent implements OnInit {
       this.reserveService.readAll().subscribe(reserveData => {
         this.reservasHabitacion(reserveData);
       });
-      this.userService.readAll().subscribe(userData => {
-        this.usuario = userData[2];
-      });
     });
   }
 
@@ -85,10 +82,16 @@ export class ReserveComponent implements OnInit {
     }
   }
 
-  create(reserva: Reserve): void {
-    this.reserveService.create(this.reserva).subscribe();
-    this.snackBar.open('Reserva realizada !', 'Info', {
-      duration: 8000
+  createReserva(): void {
+    this.reserveService.create(this.reserva).subscribe(data => {
+      this.reserva = data;
+      this.synchronize();
+      this.snackBar.open('Reserva realizada !', 'Info', {
+        duration: 8000
+      });
+      const dialogRef = this.payDialog.open(PayComponent, {
+        data: { 'idRoom': this.reserva._id },
+      });
     });
   }
 
@@ -115,10 +118,7 @@ export class ReserveComponent implements OnInit {
     };
     if (this.httpService.isAuthenticated()) {
       if (this.validate(this.reserva)) {
-        this.create(this.reserva);
-        const dialogRef = this.payDialog.open(PayComponent, {
-          data : {'idRoom': this.roomId},
-        });
+        this.createReserva();
       } else {
         this.snackBar.open('La habitación no está disponible en esa fecha. Consulte las reservas de la habitación en el listado.', 'Error', {
           duration: 8000
@@ -130,7 +130,7 @@ export class ReserveComponent implements OnInit {
       });
       const dialogRef = this.loginDialog.open(LoginComponent, {
         width: '250px',
-        data : {'idRoom': this.roomId},
+        data: { 'idRoom': this.roomId },
       });
     }
 
