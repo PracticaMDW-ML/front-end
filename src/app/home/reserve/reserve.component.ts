@@ -84,8 +84,7 @@ export class ReserveComponent implements OnInit {
   formatDate(fecha: Date): string {
     const fechaReserva = new Date(fecha);
     return fechaReserva.getDate().toString() + '/' + (fechaReserva.getMonth() + 1).toString() + '/' +
-      fechaReserva.getFullYear().toString() + ', ' +
-      fechaReserva.getHours().toString() + ':' + fechaReserva.getMinutes();
+      fechaReserva.getFullYear().toString() + ', ' + fechaReserva.toLocaleTimeString();
   }
 
   createReserva(): void {
@@ -139,29 +138,23 @@ export class ReserveComponent implements OnInit {
         data: { 'idRoom': this.roomId },
       });
     }
-
   }
 
   validate(reserva: Reserve): boolean {
-
     for (let i = 0; i < this.reservas.length; i++) {
       const fechaEntradaReservas = new Date(Date.parse(this.reservas[i].fechaEntrada.toString()));
       const fechaSalidaReservas = new Date(Date.parse(this.reservas[i].fechaSalida.toString()));
+      fechaSalidaReservas.setHours( fechaSalidaReservas.getHours() + 2 );
       const fechaEntradaReserva = new Date(this.reserva.fechaEntrada);
       const fechaSalidaReserva = new Date(this.reserva.fechaSalida);
-
       if (fechaEntradaReserva >= fechaEntradaReservas && fechaEntradaReserva < fechaSalidaReservas) {
         return false;
       }
-
       if (fechaEntradaReserva < fechaEntradaReservas && fechaSalidaReserva > fechaEntradaReservas) {
         return false;
       }
-
     }
     return true;
   }
-
-
 }
 
