@@ -11,7 +11,7 @@
         Fecha entrada
         <angular2-date-picker [(ngModel)]="dateEntrada" [settings]="settings"></angular2-date-picker>
       </div>
-      
+
       <div fxFlex>
         <mat-form-field>
           <mat-select placeholder="Horas" [(ngModel)]="totalHoras" [(value)]="totalHoras">
@@ -29,6 +29,23 @@
         <mat-icon>payment</mat-icon>
       </button>
     </div>
-    <app-crud [title]="title" [columns]="columns" [data]="reservas"></app-crud>
+
+    <mat-card>
+      <mat-card-title>
+        {{title}}
+      </mat-card-title>
+      <mat-card-content>
+        <mat-table class="mat-elevation-z8" #table [dataSource]="reservas" matSort>
+          <!-- Dynamic column -->
+          <ng-container *ngFor="let def of columns" [matColumnDef]="def">
+            <mat-header-cell *matHeaderCellDef>{{ def }}</mat-header-cell>
+            <mat-cell *matCellDef='let row'>{{ formatDate( row[def] ) }}</mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+          <mat-row *matRowDef="let item; columns: columns;"></mat-row>
+        </mat-table>
+      </mat-card-content>
+    </mat-card>
+
   </div>
 </div>

@@ -11,7 +11,7 @@ export class LoginService {
     return this.httpService.login(username, password);
   }
 
-  registerUser(username: string, password: string): Observable<any> {
+  registerUser(username: string, password: string): Observable<boolean> {
     return this.httpService.registerUser(username, password);
   }
 }

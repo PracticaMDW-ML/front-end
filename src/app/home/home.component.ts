@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LoginComponent } from './login-dialog.component';
 import { RoomComponent } from './room/room.component';
-import { HttpService } from "../core/http.service";
-import { User } from './shared/user.model';
+import { HttpService } from '../core/http.service';
 
 @Component({
   selector: 'app-home',

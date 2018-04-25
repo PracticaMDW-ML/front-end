@@ -3,11 +3,9 @@
     <img src="../../assets/hotelporhoras.jpg">
   </button>
   <span class="span-aling-spacer"></span>
-
-  <div *ngIf="isAuthenticated(); then userLogin; else buttonLogin">
-  </div>
+  <div *ngIf="isAuthenticated(); then userLogin; else buttonLogin"></div>
   <ng-template #userLogin>
-    <span>{{getLoginUsuario()}}</span>
+    <span class="greenText">Hola, {{getLoginUsuario()}}</span>
     <mat-icon>person_outline</mat-icon>
   </ng-template>
   <ng-template #buttonLogin>

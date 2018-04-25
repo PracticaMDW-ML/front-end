@@ -14,6 +14,12 @@ h1{
 
 }
 
+h2{
+    text-align: center;
+    color: rgb(1, 22, 90);
+    font-variant: small-caps;
+}
+
 .buttons_dialog{
     text-align: center;
 }

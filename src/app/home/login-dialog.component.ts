@@ -32,13 +32,20 @@ export class LoginComponent {
             this.router.navigate(['home/reservas', this.data.idRoom]);
           }
         } else {
-          this.loginService.registerUser(this.usuario, this.password);
-          this.loginService.login(this.usuario, this.password).subscribe(
-            exito2 => {
-              if (exito2) {
-                this.router.navigate(['home/reservas', this.data.idRoom]);
+          this.loginService.registerUser(this.usuario, this.password).subscribe(
+            res => {
+              if (res) {
+                this.loginService.login(this.usuario, this.password).subscribe(
+                  exito2 => {
+                    if (exito2) {
+                      this.router.navigate(['home/reservas', this.data.idRoom]);
+                      this.showRegisterUserAlert();
+                    } else {
+                      this.showErrorAuthentication();
+                    }
+                  });
               } else {
-                this.showErrorAuthentication();
+                this.showErrorServer();
               }
             });
         }
@@ -46,8 +53,20 @@ export class LoginComponent {
     );
   }
 
+  showRegisterUserAlert(): void {
+    this.snackBar.open(`Cuenta de usuario creada automaticamente para "${this.usuario}"`, 'Info', {
+      duration: 8000
+    });
+  }
+
   showErrorAuthentication(): void {
     this.snackBar.open("Autenticacion fallida", 'Error', {
+      duration: 8000
+    });
+  }
+
+  showErrorServer(): void {
+    this.snackBar.open("Error de conexion con el servidor", 'Error', {
       duration: 8000
     });
   }
