@@ -27,7 +27,7 @@ export class ReserveComponent implements OnInit {
   reservas: Reserve[];
   reserva: Reserve;
   title = 'Reservas existentes';
-  columns = ['fechaEntrada', 'fechaSalida', 'precio'];
+  columns = ['fechaEntrada', 'fechaSalida'];
   dateEntrada: Date;
   dateSalida: Date;
   settings = {
