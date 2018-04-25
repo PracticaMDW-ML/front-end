@@ -7,3 +7,7 @@ img {
   width: 100%;
   height: auto;
 }
+
+.mat-card{
+  margin-top: 10px;
+}

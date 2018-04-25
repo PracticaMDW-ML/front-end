@@ -75,10 +75,17 @@ export class ReserveComponent implements OnInit {
   reservasHabitacion(data: Reserve[]) {
     this.reservas = [];
     for (let i = 0; i < data.length; i++) {
-      if (data[i].habitacion.imagen === this.room.imagen) {
+      if (data[i].habitacion._id === this.room._id) {
         this.reservas.push(data[i]);
       }
     }
+  }
+
+  formatDate(fecha: Date): string {
+    const fechaReserva = new Date(fecha);
+    return fechaReserva.getDate().toString() + '/' + (fechaReserva.getMonth() + 1).toString() + '/' +
+      fechaReserva.getFullYear().toString() + ', ' +
+      fechaReserva.getHours().toString() + ':' + fechaReserva.getMinutes();
   }
 
   createReserva(): void {

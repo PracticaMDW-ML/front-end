@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpService } from './http.service';
 import { NgModule } from '@angular/core';
-import { CrudComponent } from './crud.component';
 
 import {
     MatDialogModule,
@@ -27,12 +26,6 @@ import {
         MatInputModule,
         MatSortModule,
         MatTableModule,
-    ],
-    declarations: [
-      CrudComponent
-    ],
-    exports: [
-      CrudComponent
     ],
     entryComponents: [],
     providers: [
