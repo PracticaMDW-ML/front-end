@@ -90,7 +90,7 @@ export class ReserveComponent implements OnInit {
         duration: 8000
       });
       const dialogRef = this.payDialog.open(PayComponent, {
-        data: { 'idRoom': this.reserva._id },
+        data: { 'idReserva': this.reserva._id, 'precioReserva': this.reserva.precio },
       });
     });
   }
