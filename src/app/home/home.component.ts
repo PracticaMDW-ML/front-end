@@ -1,8 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
-import {Router} from '@angular/router';
-import {MatDialog} from '@angular/material';
-import {LoginComponent} from './login-dialog.component';
-import {RoomComponent} from './room/room.component';
+import { Component, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LoginComponent } from './login-dialog.component';
+import { RoomComponent } from './room/room.component';
+import { HttpService } from '../core/http.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ import {RoomComponent} from './room/room.component';
 export class HomeComponent implements OnDestroy {
 
   static URL = 'home';
-  constructor(public loginDialog: MatDialog, private router: Router) {
+  constructor(public loginDialog: MatDialog, private router: Router, private httpService: HttpService) {
   }
 
   ngOnDestroy(): void {
@@ -28,4 +29,13 @@ export class HomeComponent implements OnDestroy {
   home() {
     this.router.navigate([HomeComponent.URL, RoomComponent.URL]);
   }
+
+  isAuthenticated(): boolean {
+    return this.httpService.isAuthenticated();
+  }
+
+  getLoginUsuario(): string {
+    return this.httpService.getUsuario();
+  }
+
 }

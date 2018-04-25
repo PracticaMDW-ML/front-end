@@ -9,7 +9,6 @@ import { Room } from '../shared/room.model';
 import { RoomType } from '../shared/roomType.model';
 import { User } from '../shared/user.model';
 import { ActivatedRoute } from "@angular/router";
-import { UserService } from '../shared/user.service';
 import { HttpService } from "../../core/http.service";
 import { LoginComponent } from "../login-dialog.component";
 
@@ -51,7 +50,7 @@ export class ReserveComponent implements OnInit {
   totalHoras: number;
 
   constructor(public loginDialog: MatDialog, public payDialog: MatDialog, private snackBar: MatSnackBar,
-    private reserveService: ReserveService, private roomService: RoomService, private userService: UserService, private route: ActivatedRoute, private httpService: HttpService) {
+    private reserveService: ReserveService, private roomService: RoomService, private route: ActivatedRoute, private httpService: HttpService) {
 
     this.route.params.subscribe(params => this.roomId = params['id']);
     this.room = { imagen: '', tipoHabitacion: RoomType.INDIVIDUAL };

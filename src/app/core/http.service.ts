@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
-import {User} from "../home/shared/user.model";
+import { User } from '../home/shared/user.model';
 
 @Injectable()
 export class HttpService {
@@ -28,6 +28,7 @@ export class HttpService {
     private responseType: ResponseContentType;
 
     private token: string;
+    private usuario: string;
 
     constructor(private http: Http, private snackBar: MatSnackBar, private router: Router) {
         this.resetOptions();
@@ -50,67 +51,72 @@ export class HttpService {
     }
 
     login(username: string, password: string): Observable<any> {
-      const user: User = {usuario: username, password: password};
-      return this.post(HttpService.LOGIN, user).map(
-        res => this.token = res.token,
-        error => this.token = null,
-      );
+        const user: User = { usuario: username, password: password };
+        this.usuario = username;
+        return this.post(HttpService.LOGIN, user).map(
+            res => this.token = res.token,
+            error => this.token = null,
+        );
+    }
+
+    getUsuario(): string {
+        return this.usuario;
     }
 
     isAuthenticated(): boolean {
-      return this.token ? true : false;
+        return this.token ? true : false;
     }
 
     get(endpoint: string): Observable<any> {
         return this.http.get(HttpService.API_END_POINT + endpoint, this.createOptions()).map(
             response => this.extractData(response)).catch(
-                error => {
-                    return this.handleError(error);
-                });
+            error => {
+                return this.handleError(error);
+            });
     }
 
     registerUser(username: string, password: string): Observable<boolean> {
-      const user: User = {usuario: username, password: password};
-      return this.post(HttpService.CREATE_USER, user).map(
-        res => true,
-        error => false,
-      );
+        const user: User = { usuario: username, password: password };
+        return this.post(HttpService.CREATE_USER, user).map(
+            res => true,
+            error => false,
+        );
     }
 
     post(endpoint: string, body?: Object): Observable<any> {
         this.header('Authorization', this.token);
         return this.http.post(HttpService.API_END_POINT + endpoint, body, this.createOptions()).map(
             response => this.extractData(response)).catch(
-                error => {
-                    return this.handleError(error);
-                });
+            error => {
+                return this.handleError(error);
+            });
     }
 
     delete(endpoint: string): Observable<any> {
         this.header('Authorization', this.token);
         return this.http.delete(HttpService.API_END_POINT + endpoint, this.createOptions()).map(
             response => this.extractData(response)).catch(
-                error => {
-                    return this.handleError(error);
-                });
+            error => {
+                return this.handleError(error);
+            });
     }
 
     put(endpoint: string, body?: Object): Observable<any> {
         this.header('Authorization', this.token);
         return this.http.put(HttpService.API_END_POINT + endpoint, body, this.createOptions()).map(
             response => this.extractData(response)).catch(
-                error => {
-                    return this.handleError(error);
-                });
+            error => {
+                return this.handleError(error);
+            });
     }
 
     patch(endpoint: string, body?: Object): Observable<any> {
         this.header('Authorization', this.token);
         return this.http.patch(HttpService.API_END_POINT + endpoint, body, this.createOptions()).map(
             response => this.extractData(response)).catch(
-                error => {
-                    return this.handleError(error);
-                });
+            error => {
+                return this.handleError(error);
+            });
     }
 
     private createOptions(): RequestOptions {
