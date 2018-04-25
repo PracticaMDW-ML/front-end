@@ -66,10 +66,6 @@ export class HttpService {
         return this.token ? true : false;
     }
 
-    getUsuario(): string{
-        return this.usuario;
-    }
-
     get(endpoint: string): Observable<any> {
         return this.http.get(HttpService.API_END_POINT + endpoint, this.createOptions()).map(
             response => this.extractData(response)).catch(
