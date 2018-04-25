@@ -70,9 +70,6 @@ export class ReserveComponent implements OnInit {
       this.reserveService.readAll().subscribe(reserveData => {
         this.reservasHabitacion(reserveData);
       });
-      this.userService.readAll().subscribe(userData => {
-        this.usuario = userData[2];
-      });
     });
   }
 
@@ -88,6 +85,7 @@ export class ReserveComponent implements OnInit {
   createReserva(): void {
     this.reserveService.create(this.reserva).subscribe(data => {
       this.reserva = data;
+      this.synchronize();
       this.snackBar.open('Reserva realizada !', 'Info', {
         duration: 8000
       });
