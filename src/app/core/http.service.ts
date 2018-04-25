@@ -18,7 +18,6 @@ export class HttpService {
     static API_END_POINT = 'http://localhost:3000';
 
     static CREATE_USER = '/usuarios';
-
     static LOGIN = '/auth';
 
     private params: URLSearchParams;
