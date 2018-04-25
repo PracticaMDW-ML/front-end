@@ -12,7 +12,6 @@ import { ActivatedRoute } from "@angular/router";
 import { UserService } from '../shared/user.service';
 import { HttpService } from "../../core/http.service";
 import { LoginComponent } from "../login-dialog.component";
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   templateUrl: 'reserve.component.html',
@@ -98,14 +97,6 @@ export class ReserveComponent implements OnInit {
     });
   }
 
-  /*this.reserveService.create(this.reserva).subscribe(data => {
-    return data;
-  });
-  this.snackBar.open('Reserva realizada !', 'Info', {
-    duration: 8000
-  });
-}*/
-
   calculateDateSalida(): void {
     this.dateSalida = new Date(this.dateEntrada);
     if ((this.dateSalida.getHours() + this.totalHoras) <= 24) {
@@ -129,7 +120,7 @@ export class ReserveComponent implements OnInit {
     };
     if (this.httpService.isAuthenticated()) {
       if (this.validate(this.reserva)) {
-          this.createReserva();
+        this.createReserva();
       } else {
         this.snackBar.open('La habitación no está disponible en esa fecha. Consulte las reservas de la habitación en el listado.', 'Error', {
           duration: 8000
