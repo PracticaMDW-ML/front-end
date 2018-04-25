@@ -26,9 +26,8 @@ import {
   MatTabsModule, MatToolbarModule, MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import {LoginService} from "./home/shared/login.service";
-import { UserService } from './home/shared/user.service';
-import {PayService} from "./home/shared/pay-dialog.service";
+import { LoginService } from "./home/shared/login.service";
+import { PayService } from "./home/shared/pay-dialog.service";
 
 
 @NgModule({
@@ -88,7 +87,6 @@ import {PayService} from "./home/shared/pay-dialog.service";
     ReserveService,
     RoomService,
     LoginService,
-    UserService,
     PayService,
   ]
 })
