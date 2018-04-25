@@ -38,7 +38,9 @@ export class LoginComponent {
                 this.loginService.login(this.usuario, this.password).subscribe(
                   exito2 => {
                     if (exito2) {
-                      this.router.navigate(['home/reservas', this.data.idRoom]);
+                      if (this.data != null) {
+                        this.router.navigate(['home/reservas', this.data.idRoom]);
+                      }
                       this.showRegisterUserAlert();
                     } else {
                       this.showErrorAuthentication();
